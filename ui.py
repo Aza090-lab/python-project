@@ -5,5 +5,5 @@ def main_ui():
         print("\nAÇÃO INVALIDA!!!!")
         main_ui()
     else:
-        print("a")
+        print("abc")
 main_ui()
