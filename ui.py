@@ -20,5 +20,6 @@ def usuario_ui():
         print("Ação invalida! Tente novamente...")
         usuario_ui()
     elif m == "1":
-        in_usuario = models.in_usuario()
+        models.in_usuario()
     elif m == "2":
+        print(models.return_usuario())
