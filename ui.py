@@ -1,7 +1,7 @@
 import models
 
 def main_ui():
-    print("=== Gerenciador De Projetos ===\n[1] Usuários\n[2] Projetos\n[3] Tarefas")
+    print("====== Gerenciador De Projetos ======\n[1] Usuários\n[2] Projetos\n[3] Tarefas")
     m = input("...")
     if m not in "123":
         print("Ação invalida! Tente novamente...")
@@ -14,5 +14,5 @@ def main_ui():
     else:
         print("\nTarefas...")
 
-
-main_ui()
+def usuario_ui():
+    
