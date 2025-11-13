@@ -23,3 +23,9 @@ def usuario_ui():
         models.in_usuario()
     elif m == "2":
         print(models.return_usuario())
+    elif m == "3":
+        op = int(input("[1]Email\n[2] Nome\n..."))
+        if op == 1:
+            models.search_usuario(input("Digite o email..."),1)
+        else:
+            models.search_usuario(input("Digite o nome..."),2)
