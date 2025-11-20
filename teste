@@ -1,3 +1,0 @@
-x = int(input("digite seu nome: "))
-for i in range(5):
- print(x)
