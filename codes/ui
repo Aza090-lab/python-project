@@ -120,9 +120,6 @@ def usuarios_ui():
                         else:
                             print("Usuário não encontrado!")
 
-
-            
-
     main_ui()
 
 
