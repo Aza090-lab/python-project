@@ -12,10 +12,13 @@ Usuários
 Cadastrar, listar, buscar por nome/e-mail, atualizar, remover.
 Regras: e-mail único; nome não vazio.
 '''
+#=====Imports=====
+#import functions
+
 #=====Variaveis=====
 usuarios_list = []
 what = "" #O tipo (nome ou e-mail) doq vai buscar
-serch = "" # A coisa que vai buscar
+search = "" # A coisa que vai buscar
 #=====Menu inicial de escolhas=====
 def main_ui():
     print("="*10,"Gerenciador de Projetos","="*10)
@@ -63,7 +66,7 @@ def usuarios_ui():
 
             print("Buscor por...\n[1] Nome\n[2] E-mail")
             what = input("...")
-            
+
             if what not in "12":
                 print("Opção invalida! Tente novamente...")
                 usuarios_ui()

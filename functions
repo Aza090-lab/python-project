@@ -1,0 +1,13 @@
+'''
+Esse arqui deve servir APENAS para funções, como busca e coisas relacionadas...
+favor, evitar modificar arquidos já prontos, e caso edite, coloque com um '#' qual a mudança feita e por quem...
+incluse evitem criar funções repetidas...
+'''
+
+def usuario_serach(what, search, list):
+    if what == "1":
+        for i in list:
+            if list[i['NOME']] == "what":
+                print(list[i])
+            else:
+                return()
