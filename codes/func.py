@@ -37,18 +37,18 @@ def search_user():
     else:
         if what == "1":
             obj = input("Digte o nome...")
-            for i in usuarios_list:
-                if i['NOME'] == obj:
-                     print(i)
-                     break
+            for i in range(len(usuarios_list)):
+                if usuarios_list[i]['NOME'] == obj:
+                     print(usuarios_list[i])
+                     return(i)
                 else:
                      print("Usuário não encontrado!")
         else:
             obj = input("Digite o e-mail...")
-            for i in usuarios_list:
-                if i['E-MAIL'] == obj:
-                    print(i)
-                    break
+            for i in range(len(usuarios_list)):
+                if usuarios_list[i]['E-MAIL'] == obj:
+                     print(usuarios_list[i])
+                     return(i)
                 else:
                     print("Usuário não encontrado!")
         
@@ -56,14 +56,14 @@ def update_user():
      if len(usuarios_list)==0:
           print("Nenhum usuário cadastrado!")
           ui.main_ui()
-     print("Localizar usuário por...\n[1] Nome\n[2] E-mail")
-     what = input("...")
-     if what not in "12":
-          print("Opção invalida! Tente novamente...")
+     x = search_user()
+     usuarios_list[x] = {'NOME': input("NOME..."), 'E-MAIL': input("E-MAIL..."), 'PERFIL': input("PERFIL...")} 
+
+def remove_user():
+     if len(usuarios_list)==0:
+          print("Nenhum usuário cadastrado!")
           ui.main_ui()
-     else:
-          if what == "1":
-               obj = input("Digite o nome...")
-               for i in range(len(usuarios_list)):
-                    if usuarios_list[i['NOME']] == obj:
-                         print(usuarios_list[i['NOME']])
+     x = search_user()
+     del usuarios_list[x]
+
+     

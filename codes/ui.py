@@ -15,11 +15,6 @@ Regras: e-mail único; nome não vazio.
 #=====Imports=====
 import func
 
-#=====Variaveis=====
-usuarios_list = []
-what = "" #O tipo (nome ou e-mail) doq vai buscar
-obj = "" # A coisa que vai buscar
-
 #=====Menu inicial de escolhas=====
 def main_ui():
     print("="*10,"Gerenciador de Projetos","="*10)
@@ -44,7 +39,7 @@ def main_ui():
 #=====Menu de escolhas Usuários=====
 def usuarios_ui():
     print("="*10,"Usuários","="*10)
-    print("[1] Cadastras\n[2] listar\n[3] Buscar\n[4] Atualizar\n[5] Remover\n[0] Voltar")
+    print("[1] Cadastrar\n[2] listar\n[3] Buscar\n[4] Atualizar\n[5] Remover\n[0] Voltar")
     chose = input("Digite uma opção...")
 
     if chose not in "123450":
@@ -52,21 +47,27 @@ def usuarios_ui():
         usuarios_ui()
     
     else: 
+        #Voltar
         if chose == "0":
             main_ui()
         
+        #Cadastrar
         elif chose == "1":
             func.add_user()
         
+        #Listar
         elif chose == "2":
             func.list_users()
         
+        #Buscar
         elif chose == "3":
             func.search_user()
 
+        #Atualizar
         elif chose == "4":
-            print('4')
+            func.update_user()
+        
+        #Remover
+        elif chose == "5":
+            func.remove_user()
     main_ui()
-
-
-main_ui()
