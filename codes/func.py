@@ -39,7 +39,7 @@ def search_user():
         if what == "1":
             obj = input("Digte o nome...")
             for i in range(len(usuarios_list)):
-                if usuarios_list[i]['NOME'] == obj:
+                if usuarios_list[i]['NOME'].lower() == obj.lower():
                      print(usuarios_list[i])
                      return(i)
                 else:
@@ -47,7 +47,7 @@ def search_user():
         else:
             obj = input("Digite o e-mail...")
             for i in range(len(usuarios_list)):
-                if usuarios_list[i]['E-MAIL'] == obj:
+                if usuarios_list[i]['E-MAIL'].lower() == obj.lower():
                      print(usuarios_list[i])
                      return(i)
                 else:
