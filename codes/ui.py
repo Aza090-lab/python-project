@@ -15,6 +15,13 @@ Regras: e-mail único; nome não vazio.
 #=====Imports=====
 import func
 
+import os
+import sys
+
+#=====Limpar terminal=====
+def clean():
+    os.system('clear')
+
 #=====Menu inicial de escolhas=====
 def main_ui():
     print("="*10,"Gerenciador de Projetos","="*10)
@@ -24,8 +31,10 @@ def main_ui():
 
     if chose not in "123":
         print("Opção invalida! Tente novamente...")
+        clean()
         main_ui()
     else:
+        clean()
         #Usuários
         if chose == "1":
             usuarios_ui()
@@ -44,9 +53,11 @@ def usuarios_ui():
 
     if chose not in "123450":
         print("Opção invalida! Tente novamente...")
+        clean()
         usuarios_ui()
     
     else: 
+        clean()
         #Voltar
         if chose == "0":
             main_ui()

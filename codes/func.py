@@ -6,6 +6,7 @@ incluse evitem criar funções repetidas...
 
 #=====imports=====
 import ui
+import utils
 
 #=====Variaveis=====
 usuarios_list = []
@@ -13,7 +14,7 @@ what = "" #O tipo (nome ou e-mail) doq vai buscar
 obj = "" # A coisa que vai buscar
 
 def add_user():
-    usuario = {'NOME': input("NOME..."), 'E-MAIL': input("E-MAIL..."), 'PERFIL': input("PERFIL...")}
+    usuario = {'NOME': utils.invalid_user_name(), 'E-MAIL': utils.invalid_user_email(usuarios_list), 'PERFIL': input("PERFIL...")}
     usuarios_list.append(usuario)
 
 def list_users():
