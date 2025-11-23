@@ -7,6 +7,7 @@ incluse evitem criar funções repetidas...
 #=====imports=====
 import ui
 import utils
+import storage
 
 #=====Variaveis=====
 usuarios_list = []
