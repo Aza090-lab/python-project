@@ -67,6 +67,7 @@ def update_user():
           ui.main_ui()
      x = search_user()
      usuarios_list[x] = {'NOME': input("NOME..."), 'E-MAIL': input("E-MAIL..."), 'PERFIL': input("PERFIL...")} 
+     storage.save(usuarios_list, 'usuarios.json')
 
 #=====remove um usuário=====
 def remove_user():
@@ -75,5 +76,6 @@ def remove_user():
           ui.main_ui()
      x = search_user()
      del usuarios_list[x]
+     storage.save(usuarios_list, 'usuarios.json')
 
      
