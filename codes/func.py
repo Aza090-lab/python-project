@@ -11,6 +11,7 @@ import storage
 
 #=====Variaveis=====
 usuarios_list = []
+usuarios_list = list(storage.load('usuarios.json'))
 what = "" #O tipo (nome ou e-mail) doq vai buscar
 obj = "" # A coisa que vai buscar
 
@@ -18,6 +19,8 @@ obj = "" # A coisa que vai buscar
 def add_user():
     usuario = {'NOME': utils.invalid_user_name(), 'E-MAIL': utils.invalid_user_email(usuarios_list), 'PERFIL': input("PERFIL...")}
     usuarios_list.append(usuario)
+    storage.save(usuarios_list, 'usuarios.json')
+
 
 #=====lista os usuários=====
 def list_users():
