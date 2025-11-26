@@ -56,16 +56,14 @@ def search_user():
                 if usuarios_list[i]['NOME'].lower() == obj.lower():
                      print(usuarios_list[i])
                      return(i)
-                else:
-                     print("Usuário não encontrado!")
+            print("Usuário não encontrado!")
         else:
             obj = input("Digite o e-mail...")
             for i in range(len(usuarios_list)):
                 if usuarios_list[i]['E-MAIL'].lower() == obj.lower():
                      print(usuarios_list[i])
                      return(i)
-                else:
-                    print("Usuário não encontrado!")
+            print("Usuário não encontrado!")
 
 #=====atualiza um usuário=====
 def update_user():
@@ -89,26 +87,27 @@ def remove_user():
 
 #=====Projetos=====    
 def cad_projetos():
-    projeto={
-    "id":input("digite o id do seu projeto:"),
-    "nome":input("digite o nome do projeto:"),
-    "descricao":input("digite a descrição do seu projeto: "),
-    "data_inicio":input("digite a data de início do seu projeto:"),
-    "data_fim":input("digite a data do fim do seu projeto:"),
-    }
+    projeto={"id":input("digite o id do seu projeto:"),"nome":input("digite o nome do projeto:"),"descricao":input("digite a descrição do seu projeto: "),"data_inicio":input("digite a data de início do seu projeto:"),"data_fim":input("digite a data do fim do seu projeto:")}
     projetos_list.append(projeto)
 
 #=====Listar projetos=====
 def listar_projetos():
-    for i in projetos_list:
-        print(f"id:{i['id']}")
-        print(f"nome:{i['nome']}")
-        print(f"descrição:{i['descricao']}")
-        print(f"data_inicio:{i['data_inicio']}")
-        print(f"data_fim:{i['data_fim']}")
+    if len(projetos_list) == 0:
+        print("Nenhum usuário cadastrado!")
+    else:
+        for i in projetos_list:
+          print(f"id:{i['id']}")
+          print(f"nome:{i['nome']}")
+          print(f"descrição:{i['descricao']}")
+          print(f"data_inicio:{i['data_inicio']}")
+          print(f"data_fim:{i['data_fim']}")
 
 #buscar
 def buscar_projetos():
+    if len(projetos_list) == 0:
+        print("Nenhum usuário cadastrado!")
+        ui.main_ui()
+
     id_projetos_list=input("Digite o id do projeto: ")
     encontrado=[]
     for projeto in projetos_list:
@@ -127,6 +126,10 @@ def buscar_projetos():
 
 #atualizar
 def atualizar_projetos():
+    if len(projetos_list) == 0:
+        print("Nenhum usuário cadastrado!")
+        ui.main_ui()
+
     id_projetos_list=input("Digite o id do projeto: ")
     encontrado=[]
     for projeto in projetos_list:
@@ -145,6 +148,10 @@ def atualizar_projetos():
 
 #excluir
 def excluir_projetos():
+    if len(projetos_list) == 0:
+        print("Nenhum usuário cadastrado!")
+        ui.main_ui()
+
     id_projetos_list=input("Digite o id do projeto: ")
     for i,projeto in enumerate(projetos_list):
         if projeto["id"] == id_projetos_list:
@@ -153,7 +160,7 @@ def excluir_projetos():
 
 
 
-#Tarefas!!!!!
+#=====Tarefas=====
 def add_tarefa():
     tarefa = {'TITULO': input("TITULO..."), 'PROJETOS': input("PROJETOS..."), 'RESPONSAVEL': input("RESPONSAVEL..."), 'STATUS':utils.tarefa_status(), 'PRAZO':utils.tarefa_prazo()}
     tarefas_list.append(tarefa)
@@ -162,21 +169,46 @@ def list_tarefas():
     if len(tarefas_list) == 0:
         print("Nenhum usuário cadastrado!")
 
-    choice = input('LISTAR...\n[1] Todas \n [2] Projetos \n [3] Usuários\n [4] Status')
+    else:
+        choice = input('LISTAR por...\n[1] Todas\n[2] Projetos\n[3] Usuários\n[4] Status')
     
-    if choice not in '1234':
-        print('Opção invalida!')
-        ui.tarefas_ui()
-    elif choice == '1':
-        for i in range(len(tarefas_list)):
-           print(tarefas_list[i])
-    elif choice == '2':
-        for i in range(len(tarefas_list)):
-           print(tarefas_list[i]['PROJETOS'])
-    elif choice == '3':
-        for i in range(len(tarefas_list)):
-           print(tarefas_list[i]['RESPONSAVEL'])
-    elif choice == '4':
-        for i in range(len(tarefas_list)):
-           print(tarefas_list[i]['STATUS'])
+        if choice not in '1234':
+         print("Opção invalida! Tente novamente...")
+         ui.tarefas_ui()
 
+        #Todas
+        elif choice == '1':
+          for i in range(len(tarefas_list)):
+            print(tarefas_list[i])
+
+        #Por projeto...
+        elif choice == '2':
+              x = buscar_tarefas("PROJETOS")
+
+              if x != None:
+                for i in tarefas_list:
+                  if i["PROJETOS"] == tarefas_list[x]["PROJETOS"]:
+                      print(tarefas_list[x])
+
+        elif choice == '3':
+            x = buscar_tarefas("RESPONSAVEL")
+
+            if x != None:
+                for i in tarefas_list:
+                  if i["RESPONSAVEL"] == tarefas_list[x]["RESPONSAVEL"]:
+                      print(tarefas_list[x])
+
+        elif choice == '4':
+             x = buscar_tarefas("STATUS")
+
+             if x != None:
+                for i in tarefas_list:
+                  if i["STATUS"] == tarefas_list[x]["STATUS"]:
+                      print(tarefas_list[x])
+
+def buscar_tarefas(what):
+    obj = input("Digte...")
+    for i in range(len(tarefas_list)):
+        if tarefas_list[i][what].lower() == obj.lower():
+            return(i)
+    print("Usuário não encontrado!")
