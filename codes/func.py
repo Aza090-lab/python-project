@@ -10,13 +10,16 @@ import utils
 import storage
 
 #=====Variaveis=====
+#=====Usuários=====
 usuarios_list = []
 usuarios_list = list(storage.load('usuarios.json'))
 what = "" #O tipo (nome ou e-mail) doq vai buscar
 obj = "" # A coisa que vai buscar
 
+#=====Projetos=====
 projetos_list=[]
 
+#=====Tarefas=====
 tarefas_list=[]
 
 #=====Usuários=====
@@ -25,7 +28,6 @@ def add_user():
     usuario = {'NOME': utils.invalid_user_name(), 'E-MAIL': utils.invalid_user_email(usuarios_list), 'PERFIL': input("PERFIL...")}
     usuarios_list.append(usuario)
     storage.save(usuarios_list, 'usuarios.json')
-
 
 #=====lista os usuários=====
 def list_users():
@@ -83,7 +85,9 @@ def remove_user():
      del usuarios_list[x]
      storage.save(usuarios_list, 'usuarios.json')
 
- #=====Projetos=====    
+
+
+#=====Projetos=====    
 def cad_projetos():
     projeto={
     "id":input("digite o id do seu projeto:"),
@@ -94,8 +98,8 @@ def cad_projetos():
     }
     projetos_list.append(projeto)
 
-#listar
-def listar_lista_projetos():
+#=====Listar projetos=====
+def listar_projetos():
     for i in projetos_list:
         print(f"id:{i['id']}")
         print(f"nome:{i['nome']}")
@@ -104,7 +108,7 @@ def listar_lista_projetos():
         print(f"data_fim:{i['data_fim']}")
 
 #buscar
-def buscar_projetos_list():
+def buscar_projetos():
     id_projetos_list=input("Digite o id do projeto: ")
     encontrado=[]
     for projeto in projetos_list:
@@ -122,7 +126,7 @@ def buscar_projetos_list():
         print(f"data_fim:{i['data_fim']}")
 
 #atualizar
-def atualizar_projetos_list():
+def atualizar_projetos():
     id_projetos_list=input("Digite o id do projeto: ")
     encontrado=[]
     for projeto in projetos_list:
@@ -140,7 +144,7 @@ def atualizar_projetos_list():
         i['data_fim']=input("Digite a nova data de fim do projeto:")
 
 #excluir
-def excluir_projetos_list():
+def excluir_projetos():
     id_projetos_list=input("Digite o id do projeto: ")
     for i,projeto in enumerate(projetos_list):
         if projeto["id"] == id_projetos_list:

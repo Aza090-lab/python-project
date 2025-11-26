@@ -1,16 +1,10 @@
 '''
 =====Opções=====
-Usuários (nome, e-mail, perfil)
+-Usuários (nome, e-mail, perfil)
 
-Projetos (nome, descrição, data de início/fim)
+-Projetos (nome, descrição, data de início/fim)
 
-Tarefas (título, status, responsável, prazo)
-
-Usuários
-
-=====Usuários=====
-Cadastrar, listar, buscar por nome/e-mail, atualizar, remover.
-Regras: e-mail único; nome não vazio.
+-Tarefas (título, status, responsável, prazo)
 '''
 #=====Imports=====
 import func
@@ -47,8 +41,7 @@ def main_ui():
 
 #=====Menu de escolhas Usuários=====
 def usuarios_ui():
-    print("="*10,"Usuários","="*10)
-    print("[1] Cadastrar\n[2] listar\n[3] Buscar\n[4] Atualizar\n[5] Remover\n[0] Voltar")
+    print("="*10,"Usuários","="*10,"\n[1] Cadastrar\n[2] listar\n[3] Buscar\n[4] Atualizar\n[5] Remover\n[0] Voltar")
     chose = input("Digite uma opção...")
 
     if chose not in "123450":
@@ -85,39 +78,39 @@ def usuarios_ui():
 
 #=====Menu de escolhas Projetos=====
 def projetos_ui():
-    print(func.cad_projetos)
-    while True:
-        print("="*10,"Cadastro de Projetos","="*10,"\n[1] Adicionar\n[2] Listar\n[3] Buscar\n[4] Atualizar\n[5] Excluir\n[6] Sair")
-        opcao=input("Escolha uma opção!")
-        if opcao == "1":
-            func.cad_projetos_list()
-        elif opcao == "2":
-            func.listar_projetos_list()
-        elif opcao == "3":
-            func.buscar_projetos_list()
-        elif opcao == "4":
-            func.atualizar_projetos_list()
-        elif opcao == "5":
-            func.excluir_projetos_list()        
-        elif opcao == "6"  :
-            print("Saindo...")
-     
-            break 
-        else:
-            print("OPÇÃO INVÁLIDA!\n")
+    print("="*10,"Cadastro de Projetos","="*10,"\n[1] Adicionar\n[2] Listar\n[3] Buscar\n[4] Atualizar\n[5] Excluir\n[0] Voltar")
+    opcao=input("Digite uma opção...")
+    if opcao == "1":
+        func.cad_projetos()
+    elif opcao == "2":
+        func.listar_projetos()
+    elif opcao == "3":
+        func.buscar_projetos()
+    elif opcao == "4":
+        func.atualizar_projetos()
+    elif opcao == "5":
+        func.excluir_projetos()        
+    elif opcao == "0"  :
+        main_ui() 
+    else:
+        print("Opção invalida! Tente novamente...")
     main_ui()
+
 #=====Menu de escolhas Tarefas=====
 def tarefas_ui():
-    print("="*10,"Usuários","="*10)
-    print("[1] Cadastrar\n[2] listar \n[3] Atualizar\n[4] Remover\n[0] Voltar")
+    print("="*10,"Usuários","="*10,"\n[1]Cadastrar\n[2] listar \n[3] Atualizar\n[4] Remover\n[0] Voltar")
     chose = input("Digite uma opção...")
     
     if chose not in "123450":
         print ("opção invalida...tente novamente...")
-
-    if chose=="1":
-        func.add_tarefa()
-    if chose=="2":
-        func.list_tarefas()
+    
+    else:
+        if chose=="1":
+            func.add_tarefa()
+        if chose=="2":
+            func.list_tarefas()
+        if chose=="3":
+            return
 
     main_ui()
+
