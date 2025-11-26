@@ -31,7 +31,7 @@ def no_repet(email, usuario_list):
 #tarefa
 
 def tarefa_status ():
-    print ("pendente [1]\n andamento [2]\n concluida [3]")
+    print ("STATUS...\npendente [1]\n andamento [2]\n concluida [3]")
     choice = input("Digite uma opção...")
     if choice not in "123":
         print ("opção invalida")
@@ -43,19 +43,25 @@ def tarefa_status ():
         return('concluido')
     
 def tarefa_prazo():
-    ano= int(input())
-    mes= int (input())
-    dia= int(input())
+    print("DATA...")
+
+    ano= int(input("ANO..."))
 
     while ano < 0:
         print ("ano invalido")
-        ano= int (input())
+        ano= int (input("ANO..."))
+
+    mes= int (input("MÊS..."))
+
     while mes > 12 or mes<= 0:
         print ("mes invalido")
-        mes= int (input())
+        mes= int (input("MÊS..."))
+
+    dia= int(input("DIA..."))
+
     while dia > 31 or dia<= 0:
         print ("dia invalido")
-        dia= int (input())
+        dia= int (input("DIA..."))
 
     print (ano,"-" , mes,"-",dia )
 

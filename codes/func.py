@@ -151,6 +151,28 @@ def excluir_projetos_list():
 
 #Tarefas!!!!!
 def add_tarefa():
-    cadastrar = {'TITULO': input("TITULO..."), 'PROJETOS': input("PROJETOS..."), 'RESPONSAVEL': input("RESPONSAVEL..."), 'STATUS':utils.tarefa_status(), 'PRAZO':utils.tarefa_prazo()}
-    tarefas_list.append(cadastrar)
+    tarefa = {'TITULO': input("TITULO..."), 'PROJETOS': input("PROJETOS..."), 'RESPONSAVEL': input("RESPONSAVEL..."), 'STATUS':utils.tarefa_status(), 'PRAZO':utils.tarefa_prazo()}
+    tarefas_list.append(tarefa)
+
+def list_tarefas():
+    if len(tarefas_list) == 0:
+        print("Nenhum usuário cadastrado!")
+
+    choice = input('LISTAR...\n[1] Todas \n [2] Projetos \n [3] Usuários\n [4] Status')
+    
+    if choice not in '1234':
+        print('Opção invalida!')
+        ui.tarefas_ui()
+    elif choice == '1':
+        for i in range(len(tarefas_list)):
+           print(tarefas_list[i])
+    elif choice == '2':
+        for i in range(len(tarefas_list)):
+           print(tarefas_list[i]['PROJETOS'])
+    elif choice == '3':
+        for i in range(len(tarefas_list)):
+           print(tarefas_list[i]['RESPONSAVEL'])
+    elif choice == '4':
+        for i in range(len(tarefas_list)):
+           print(tarefas_list[i]['STATUS'])
 

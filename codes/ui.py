@@ -105,7 +105,7 @@ def projetos_ui():
             break 
         else:
             print("OPÇÃO INVÁLIDA!\n")
-
+    main_ui()
 #=====Menu de escolhas Tarefas=====
 def tarefas_ui():
     print("="*10,"Usuários","="*10)
@@ -115,6 +115,9 @@ def tarefas_ui():
     if chose not in "123450":
         print ("opção invalida...tente novamente...")
 
-    if chose==1:
+    if chose=="1":
         func.add_tarefa()
-        
+    if chose=="2":
+        func.list_tarefas()
+
+    main_ui()
