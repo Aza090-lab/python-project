@@ -17,6 +17,8 @@ obj = "" # A coisa que vai buscar
 
 projetos_list=[]
 
+tarefas_list=[]
+
 #=====Usuários=====
 #=====adiciona usuário=====
 def add_user():
@@ -144,4 +146,11 @@ def excluir_projetos_list():
         if projeto["id"] == id_projetos_list:
             projetos_list.pop(i)
             print("Projeto Excluído!")
+
+
+
+#Tarefas!!!!!
+def add_tarefa():
+    cadastrar = {'TITULO': input("TITULO..."), 'PROJETOS': input("PROJETOS..."), 'RESPONSAVEL': input("RESPONSAVEL..."), 'STATUS':utils.tarefa_status(), 'PRAZO':utils.tarefa_prazo()}
+    tarefas_list.append(cadastrar)
 

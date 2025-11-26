@@ -27,3 +27,38 @@ def no_repet(email, usuario_list):
         if i['E-MAIL'] == email:
             return(False)
     return(True)
+
+#tarefa
+
+def tarefa_status ():
+    print ("pendente [1]\n andamento [2]\n concluida [3]")
+    choice = input("Digite uma opção...")
+    if choice not in "123":
+        print ("opção invalida")
+    elif choice==1:
+        return('Pendente')
+    elif choice==2:
+        return('andamento')
+    elif choice==3:
+        return('concluido')
+    
+def tarefa_prazo():
+    ano= int(input())
+    mes= int (input())
+    dia= int(input())
+
+    while ano < 0:
+        print ("ano invalido")
+        ano= int (input())
+    while mes > 12 or mes<= 0:
+        print ("mes invalido")
+        mes= int (input())
+    while dia > 31 or dia<= 0:
+        print ("dia invalido")
+        dia= int (input())
+
+    print (ano,"-" , mes,"-",dia )
+
+
+            
+

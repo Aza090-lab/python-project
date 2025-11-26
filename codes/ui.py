@@ -43,7 +43,7 @@ def main_ui():
             projetos_ui()
         #Tarefas
         else:
-            print("3")
+            tarefas_ui()
 
 #=====Menu de escolhas Usuários=====
 def usuarios_ui():
@@ -83,17 +83,11 @@ def usuarios_ui():
             func.remove_user()
     main_ui()
 
-# fluxo principal
+#=====Menu de escolhas Projetos=====
 def projetos_ui():
     print(func.cad_projetos)
     while True:
-        print("===Cadastro de projetos_list===")
-        print("1 - Adicionar projetos_list")
-        print("2 - Listar projetos_list")
-        print("3 - Buscar projetos_list")
-        print("4 - Atualizar projetos_list")
-        print("5 - Excluir projetos_list")
-        print("6 - Sair ")
+        print("="*10,"Cadastro de Projetos","="*10,"\n[1] Adicionar\n[2] Listar\n[3] Buscar\n[4] Atualizar\n[5] Excluir\n[6] Sair")
         opcao=input("Escolha uma opção!")
         if opcao == "1":
             func.cad_projetos_list()
@@ -111,3 +105,16 @@ def projetos_ui():
             break 
         else:
             print("OPÇÃO INVÁLIDA!\n")
+
+#=====Menu de escolhas Tarefas=====
+def tarefas_ui():
+    print("="*10,"Usuários","="*10)
+    print("[1] Cadastrar\n[2] listar \n[3] Atualizar\n[4] Remover\n[0] Voltar")
+    chose = input("Digite uma opção...")
+    
+    if chose not in "123450":
+        print ("opção invalida...tente novamente...")
+
+    if chose==1:
+        func.add_tarefa()
+        
