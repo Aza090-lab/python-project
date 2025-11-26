@@ -40,7 +40,7 @@ def main_ui():
             usuarios_ui()
         #Projetos
         elif chose == "2":
-            print("2")
+            projetos_ui()
         #Tarefas
         else:
             print("3")
@@ -82,3 +82,32 @@ def usuarios_ui():
         elif chose == "5":
             func.remove_user()
     main_ui()
+
+# fluxo principal
+def projetos_ui():
+    print(func.cad_projetos)
+    while True:
+        print("===Cadastro de projetos_list===")
+        print("1 - Adicionar projetos_list")
+        print("2 - Listar projetos_list")
+        print("3 - Buscar projetos_list")
+        print("4 - Atualizar projetos_list")
+        print("5 - Excluir projetos_list")
+        print("6 - Sair ")
+        opcao=input("Escolha uma opção!")
+        if opcao == "1":
+            func.cad_projetos_list()
+        elif opcao == "2":
+            func.listar_projetos_list()
+        elif opcao == "3":
+            func.buscar_projetos_list()
+        elif opcao == "4":
+            func.atualizar_projetos_list()
+        elif opcao == "5":
+            func.excluir_projetos_list()        
+        elif opcao == "6"  :
+            print("Saindo...")
+     
+            break 
+        else:
+            print("OPÇÃO INVÁLIDA!\n")

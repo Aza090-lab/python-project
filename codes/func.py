@@ -15,6 +15,9 @@ usuarios_list = list(storage.load('usuarios.json'))
 what = "" #O tipo (nome ou e-mail) doq vai buscar
 obj = "" # A coisa que vai buscar
 
+projetos_list=[]
+
+#=====Usuários=====
 #=====adiciona usuário=====
 def add_user():
     usuario = {'NOME': utils.invalid_user_name(), 'E-MAIL': utils.invalid_user_email(usuarios_list), 'PERFIL': input("PERFIL...")}
@@ -78,4 +81,67 @@ def remove_user():
      del usuarios_list[x]
      storage.save(usuarios_list, 'usuarios.json')
 
-     
+ #=====Projetos=====    
+def cad_projetos():
+    projeto={
+    "id":input("digite o id do seu projeto:"),
+    "nome":input("digite o nome do projeto:"),
+    "descricao":input("digite a descrição do seu projeto: "),
+    "data_inicio":input("digite a data de início do seu projeto:"),
+    "data_fim":input("digite a data do fim do seu projeto:"),
+    }
+    projetos_list.append(projeto)
+
+#listar
+def listar_lista_projetos():
+    for i in projetos_list:
+        print(f"id:{i['id']}")
+        print(f"nome:{i['nome']}")
+        print(f"descrição:{i['descricao']}")
+        print(f"data_inicio:{i['data_inicio']}")
+        print(f"data_fim:{i['data_fim']}")
+
+#buscar
+def buscar_projetos_list():
+    id_projetos_list=input("Digite o id do projeto: ")
+    encontrado=[]
+    for projeto in projetos_list:
+        if id_projetos_list in projeto ["id"]:
+            encontrado.append(projeto)
+    if not encontrado:
+        print("Não encontrado!")
+        return     
+    print("Projeto Encontrado!")
+    for i in encontrado:
+        print(f"id:{i['id']}")
+        print(f"nome:{i['nome']}")
+        print(f"descrição:{i['descricao']}")
+        print(f"data_inicio:{i['data_inicio']}")
+        print(f"data_fim:{i['data_fim']}")
+
+#atualizar
+def atualizar_projetos_list():
+    id_projetos_list=input("Digite o id do projeto: ")
+    encontrado=[]
+    for projeto in projetos_list:
+        if id_projetos_list in projeto ["id"]:
+            encontrado.append(projeto)
+    if not encontrado:
+        print("Não encontrado!")
+        return     
+    print("Projeto Encontrado!")
+    for i in encontrado:
+        i['id']=input("Digite o novo id do projeto:")
+        i['nome']=input("Digite o novo nome do projeto:")
+        i['descricao']=input("Digite a nova descrição do projeto:")
+        i['data_inicio']=input("Digite a nova data de início do projeto:")
+        i['data_fim']=input("Digite a nova data de fim do projeto:")
+
+#excluir
+def excluir_projetos_list():
+    id_projetos_list=input("Digite o id do projeto: ")
+    for i,projeto in enumerate(projetos_list):
+        if projeto["id"] == id_projetos_list:
+            projetos_list.pop(i)
+            print("Projeto Excluído!")
+
