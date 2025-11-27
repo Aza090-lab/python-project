@@ -99,11 +99,14 @@ def listar_projetos():
         print("Nenhum usuário cadastrado!")
     else:
         for i in projetos_list:
+          print(i)
+          '''
           print(f"id:{i['id']}")
           print(f"nome:{i['nome']}")
           print(f"descrição:{i['descricao']}")
           print(f"data_inicio:{i['data_inicio']}")
           print(f"data_fim:{i['data_fim']}")
+          '''
 
 #buscar
 def buscar_projetos():
