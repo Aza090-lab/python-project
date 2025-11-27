@@ -18,9 +18,11 @@ obj = "" # A coisa que vai buscar
 
 #=====Projetos=====
 projetos_list=[]
+projetos_list=list(storage.load('projetos.json'))
 
 #=====Tarefas=====
 tarefas_list=[]
+tarefas_list=list(storage.load('tarefas.json'))
 
 #=====Usuários=====
 #=====adiciona usuário=====
@@ -89,6 +91,7 @@ def remove_user():
 def cad_projetos():
     projeto={"id":input("digite o id do seu projeto:"),"nome":input("digite o nome do projeto:"),"descricao":input("digite a descrição do seu projeto: "),"data_inicio":input("digite a data de início do seu projeto:"),"data_fim":input("digite a data do fim do seu projeto:")}
     projetos_list.append(projeto)
+    storage.save(projetos_list, 'projetos.json')
 
 #=====Listar projetos=====
 def listar_projetos():
@@ -138,13 +141,14 @@ def atualizar_projetos():
     if not encontrado:
         print("Não encontrado!")
         return     
-    print("Projeto Encontrado!")
+    #print("Projeto Encontrado!")
     for i in encontrado:
         i['id']=input("Digite o novo id do projeto:")
         i['nome']=input("Digite o novo nome do projeto:")
         i['descricao']=input("Digite a nova descrição do projeto:")
         i['data_inicio']=input("Digite a nova data de início do projeto:")
         i['data_fim']=input("Digite a nova data de fim do projeto:")
+    storage.save(projetos_list, 'projetos.json')
 
 #excluir
 def excluir_projetos():
@@ -157,6 +161,7 @@ def excluir_projetos():
         if projeto["id"] == id_projetos_list:
             projetos_list.pop(i)
             print("Projeto Excluído!")
+            storage.save(projetos_list, 'projetos.json')
 
 
 
@@ -164,6 +169,7 @@ def excluir_projetos():
 def add_tarefa():
     tarefa = {'TITULO': input("TITULO..."), 'PROJETOS': input("PROJETOS..."), 'RESPONSAVEL': input("RESPONSAVEL..."), 'STATUS':utils.tarefa_status(), 'PRAZO':utils.tarefa_prazo()}
     tarefas_list.append(tarefa)
+    storage.save(tarefas_list, 'tarefas.json')
 
 def list_tarefas():
     if len(tarefas_list) == 0:
@@ -212,3 +218,19 @@ def buscar_tarefas(what):
         if tarefas_list[i][what].lower() == obj.lower():
             return(i)
     print("Usuário não encontrado!")
+
+def atualizar_tarefas():
+    if len(tarefas_list)==0:
+          print("Nenhuma tarefa cadastrada!")
+          ui.main_ui()
+    x = buscar_tarefas()
+    tarefas_list[x] = {'TITULO': input("TITULO..."), 'PROJETOS': input("PROJETOS..."), 'RESPONSAVEL': input("RESPONSAVEL..."), 'STATUS':utils.tarefa_status(), 'PRAZO':utils.tarefa_prazo()}
+    storage.save(tarefas_list, 'tarefas.json')
+
+def remove_tarefas():
+    if len(tarefas_list)==0:
+          print("Nenhuma tarefa cadastrada!")
+          ui.main_ui()
+    x = buscar_tarefas()
+    del tarefas_list[x]
+    storage.save(tarefas_list, 'tarefas.json')

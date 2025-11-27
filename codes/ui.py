@@ -80,6 +80,7 @@ def usuarios_ui():
 def projetos_ui():
     print("="*10,"Cadastro de Projetos","="*10,"\n[1] Adicionar\n[2] Listar\n[3] Buscar\n[4] Atualizar\n[5] Excluir\n[0] Voltar")
     opcao=input("Digite uma opção...")
+    clean()
     if opcao == "1":
         func.cad_projetos()
     elif opcao == "2":
@@ -94,6 +95,8 @@ def projetos_ui():
         main_ui() 
     else:
         print("Opção invalida! Tente novamente...")
+        clean()
+        projetos_ui()
     main_ui()
 
 #=====Menu de escolhas Tarefas=====
@@ -103,14 +106,21 @@ def tarefas_ui():
     
     if chose not in "123450":
         print ("opção invalida...tente novamente...")
+        clean()
+        tarefas_ui()
     
     else:
+        clean()
         if chose=="1":
             func.add_tarefa()
-        if chose=="2":
+        elif chose=="2":
             func.list_tarefas()
-        if chose=="3":
-            return
+        elif chose=="3":
+            func.atualizar_tarefas()
+        elif chose=="4":
+            func.remove_tarefas
+        else:
+            main_ui()
 
     main_ui()
 

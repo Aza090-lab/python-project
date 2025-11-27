@@ -30,7 +30,7 @@ def no_repet(email, usuario_list):
 
 #=====Validação status da tarefa=====
 def tarefa_status ():
-    print ("STATUS...\npendente [1]\n andamento [2]\n concluida [3]")
+    print ("STATUS...\n[1]pendente\n[2]andamento\n[3]concluida")
     choice = input("Digite uma opção...")
     if choice not in "123":
         print ("opção invalida")
