@@ -89,7 +89,8 @@ def remove_user():
 
 #=====Projetos=====    
 def cad_projetos():
-    projeto={"id":input("digite o id do seu projeto:"),"nome":input("digite o nome do projeto:"),"descricao":input("digite a descrição do seu projeto: "),"data_inicio":input("digite a data de início do seu projeto:"),"data_fim":input("digite a data do fim do seu projeto:")}
+    projeto={"id":input("digite o id do seu projeto:"),"nome":utils.invalid_user_project(projetos_list),"descricao":input("digite a descrição do seu projeto: "),"data_inicio":utils.tarefa_prazo(),"data_fim":""}
+    projeto['data_fim'] = utils.invalid_date_end(projeto['data_inicio'])
     projetos_list.append(projeto)
     storage.save(projetos_list, 'projetos.json')
 
@@ -146,11 +147,14 @@ def atualizar_projetos():
         return     
     #print("Projeto Encontrado!")
     for i in encontrado:
+        projeto={"id":input("digite o id do seu projeto:"),"nome":utils.invalid_user_project(projetos_list),"descricao":input("digite a descrição do seu projeto: "),"data_inicio":input("digite a data de início do seu projeto:"),"data_fim":input("digite a data do fim do seu projeto:")}
+        '''
         i['id']=input("Digite o novo id do projeto:")
         i['nome']=input("Digite o novo nome do projeto:")
         i['descricao']=input("Digite a nova descrição do projeto:")
         i['data_inicio']=input("Digite a nova data de início do projeto:")
         i['data_fim']=input("Digite a nova data de fim do projeto:")
+        '''
     storage.save(projetos_list, 'projetos.json')
 
 #excluir

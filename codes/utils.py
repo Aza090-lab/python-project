@@ -62,9 +62,42 @@ def tarefa_prazo():
     while dia > 31 or dia<= 0:
         print ("Dia invalido! Digite novamente...")
         dia= int (input("DIA..."))
+    
+    x = (int(ano),"-", int(mes),"-",int(dia) )
+    return (x)
 
-    print (ano,"-", mes,"-",dia )
+#=====verifica se o projeto ja foi cadastrado=====
 
+def invalid_user_project(proj_list):
+    proj = input("NOME...")
+    while no_repet_project(proj, proj_list) == False:
+        print("NOME já foi registrado! Tente outro...")
+        proj = input("NOME...")
+    return(proj)
 
+def no_repet_project(proj, proj_list):
+    for i in proj_list:
+        if i['nome'] == proj:
+            return(False)
+    return(True)
+
+#=====verifica se o fim e depois do início=====
+
+def invalid_date_end(ini):
+    fim = tarefa_prazo()
+    #fim = fim.split('-')
+    #ini = ini.split('-')
+    
+
+    while ini[0] > fim[0]:
+        print('ANO invalido...')
+        fim = tarefa_prazo()
+    while ini[1] > fim[1]:
+        print('MÊS invalido...')
+        fim = tarefa_prazo()
+    while ini[2] > fim[2]:
+        print('DIA invalido...')
+        fim = tarefa_prazo()
+    return(fim)
             
 
