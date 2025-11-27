@@ -89,7 +89,7 @@ def remove_user():
 
 #=====Projetos=====    
 def cad_projetos():
-    projeto={"id":input("digite o id do seu projeto:"),"nome":utils.invalid_user_project(projetos_list),"descricao":input("digite a descrição do seu projeto: "),"data_inicio":utils.tarefa_prazo(),"data_fim":""}
+    projeto={"id":input("ID..."),"nome":utils.invalid_user_project(projetos_list),"descricao":input("DESCRIÇÂO"),"data_inicio":utils.tarefa_prazo(),"data_fim":""}
     projeto['data_fim'] = utils.invalid_date_end(projeto['data_inicio'])
     projetos_list.append(projeto)
     storage.save(projetos_list, 'projetos.json')
