@@ -1,3 +1,6 @@
 ========== Projeto final de PBC - Gerenciamento de projetos ==========
--
+
 - Integrantes: Ariel Severo da Silva - Ana Júlia Medeiros de Lima - Mirella Moura de Oliveira.
+
+- Este projeto foi feito em grupo, com o criterio de compor toda a nota do bimestre...
+- Ele é um programa que armazena Usuários, Projetos e Tarefas...
